@@ -1,5 +1,6 @@
 'use client';
 import Latest from '../components/Latest';
+import Insights from '../components/Insights';
 import { useEffect, useMemo, useState } from 'react';
 import {
   LineChart, Line, XAxis, YAxis, Tooltip, Legend, CartesianGrid, ResponsiveContainer
@@ -73,8 +74,8 @@ export default function Page() {
 
       {/* Main Content */}
       <div className="flex h-screen">
-        {/* Sidebar */}
-        <aside className="w-80 bg-gray-800 border-r border-gray-700 p-6">
+        {/* Left Sidebar - Live Prices */}
+        <aside className="w-80 bg-gray-800 border-r border-gray-700 p-6 overflow-y-auto">
           <h2 className="text-lg font-semibold mb-4 text-gray-200">Live Prices</h2>
           <Latest />
           
@@ -98,7 +99,7 @@ export default function Page() {
         </aside>
 
         {/* Chart Area */}
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-6 min-w-0">
           <div className="bg-gray-800 rounded-lg border border-gray-700 h-full">
             <div className="p-6 border-b border-gray-700">
               <h2 className="text-xl font-semibold text-gray-200">Price Chart</h2>
@@ -153,6 +154,15 @@ export default function Page() {
             </div>
           </div>
         </main>
+
+        {/* Right Sidebar - AI Insights */}
+        <aside className="w-96 bg-gray-800 border-l border-gray-700 p-6 overflow-y-auto">
+          <div className="flex items-center space-x-2 mb-4">
+            <span className="text-xl">🤖</span>
+            <h2 className="text-lg font-semibold text-gray-200">AI Insights</h2>
+          </div>
+          <Insights />
+        </aside>
       </div>
     </div>
   );
